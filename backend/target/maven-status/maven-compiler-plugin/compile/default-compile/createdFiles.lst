@@ -1,0 +1,13 @@
+com\example\fashionappbackend\config\WebConfig.class
+com\example\demo\controller\TaskController.class
+com\example\demo\model\User.class
+com\example\fashionappbackend\FashionAppBackendApplication.class
+com\example\demo\model\Task.class
+com\example\demo\repository\UserRepository.class
+com\example\fashionappbackend\config\WebConfig$1.class
+com\example\demo\controller\AuthController.class
+com\example\demo\security\SecurityConfig.class
+com\example\fashionappbackend\controller\HomeController.class
+com\example\demo\repository\TaskRepository.class
+com\example\demo\service\AuthService.class
+com\example\demo\security\JwtUtil.class
