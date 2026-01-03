@@ -3,6 +3,7 @@ import { useState } from "react";
 function Login() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
 
   const handleLogin = async () => {
     try {
@@ -11,17 +12,30 @@ function Login() {
         headers: {
           "Content-Type": "application/json"
         },
-        body: JSON.stringify({ username: "admin", password: "123" }) // ← THIS is the JSON body
+        body: JSON.stringify({ username, password }) // use input values
       });
 
+      // Read response body once
+      const text = await response.text();
+
+      // Try parsing JSON
+      let data;
+      try {
+        data = JSON.parse(text);
+      } catch {
+        data = { message: text || "No message" };
+      }
+
       if (response.ok) {
-        const data = await response.json();
         console.log("Login successful:", data);
+        setError(""); // clear previous errors
       } else {
-        console.log("Login failed:", response.status);
+        console.log("Login failed:", response.status, data.message);
+        setError(data.message || "Login failed");
       }
     } catch (err) {
       console.error("Error logging in:", err);
+      setError("Network error");
     }
   };
 
@@ -40,6 +54,7 @@ function Login() {
         onChange={(e) => setPassword(e.target.value)}
       />
       <button onClick={handleLogin}>Login</button>
+      {error && <p style={{ color: "red" }}>{error}</p>}
     </div>
   );
 }
