@@ -6,9 +6,11 @@ com\example\fashionappbackend\controller\TaskController.class
 com\example\fashionappbackend\FashionAppBackendApplication.class
 com\example\fashionappbackend\security\JwtUtil.class
 com\example\fashionappbackend\service\AuthService.class
+com\example\fashionappbackend\controller\TestController.class
 com\example\fashionappbackend\config\WebConfig$1.class
 com\example\fashionappbackend\controller\AuthController.class
 com\example\fashionappbackend\security\SecurityConfig.class
 com\example\fashionappbackend\controller\HomeController.class
 com\example\fashionappbackend\repository\TaskRepository.class
 com\example\fashionappbackend\model\User.class
+com\example\fashionappbackend\security\JwtAuthenticationFilter.class

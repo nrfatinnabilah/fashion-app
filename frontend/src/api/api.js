@@ -31,3 +31,19 @@ export async function getDashboardData(token) {
   if (!res.ok) throw new Error("Failed to fetch dashboard data");
   return res.json();
 }
+
+export async function getProducts(){
+  const response = await fetch("http:localhost:8080/api/products");
+  if (!response.ok) throw new Error("Failed to fetch products");
+  return await response.json();
+}
+
+export async function fetchSecureData(){
+  const token = localStorage.getItem("token");
+  const res = await fetch(`${BASE_URL}/api/test/secure`, {
+    headers: { Authorization: `Bearer ${token}`},
+  });
+
+  if (!res.ok) throw new Error("Failed to fetch secure data");
+  return res.json();
+}

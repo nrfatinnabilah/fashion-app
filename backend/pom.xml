@@ -68,7 +68,8 @@
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
-            <optional>true</optional>
+            <version>1.18.42</version> <!-- add version -->
+            <scope>provided</scope>
         </dependency>
 	<!-- Spring Boot Test (JUnit 5) -->
 <dependency>

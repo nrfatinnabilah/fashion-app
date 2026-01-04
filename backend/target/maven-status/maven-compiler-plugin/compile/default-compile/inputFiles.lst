@@ -1,7 +1,9 @@
+C:\Users\nabil\OneDrive\Desktop\fashion_app\backend\src\main\java\com\example\fashionappbackend\controller\TestController.java
 C:\Users\nabil\OneDrive\Desktop\fashion_app\backend\src\main\java\com\example\fashionappbackend\repository\TaskRepository.java
 C:\Users\nabil\OneDrive\Desktop\fashion_app\backend\src\main\java\com\example\fashionappbackend\controller\AuthController.java
 C:\Users\nabil\OneDrive\Desktop\fashion_app\backend\src\main\java\com\example\fashionappbackend\repository\UserRepository.java
 C:\Users\nabil\OneDrive\Desktop\fashion_app\backend\src\main\java\com\example\fashionappbackend\security\SecurityConfig.java
+C:\Users\nabil\OneDrive\Desktop\fashion_app\backend\src\main\java\com\example\fashionappbackend\security\JwtAuthenticationFilter.java
 C:\Users\nabil\OneDrive\Desktop\fashion_app\backend\src\main\java\com\example\fashionappbackend\WebConfig.java
 C:\Users\nabil\OneDrive\Desktop\fashion_app\backend\src\main\java\com\example\fashionappbackend\model\Task.java
 C:\Users\nabil\OneDrive\Desktop\fashion_app\backend\src\main\java\com\example\demo\auth\LoginRequest.java

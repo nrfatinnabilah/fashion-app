@@ -1,61 +1,70 @@
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 
 function Login() {
+  const navigate = useNavigate();
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-  const [error, setError] = useState("");
 
-  const handleLogin = async () => {
+  // Optional: Axios interceptor to attach token automatically
+  axios.interceptors.request.use((config) => {
+    const token = localStorage.getItem("token");
+    if (token) {
+      config.headers.Authorization = `Bearer ${token}`;
+    }
+    return config;
+  });
+
+  // Fetch secure data (can be called anywhere after login)
+  const fetchSecureData = async () => {
     try {
-      const response = await fetch("http://localhost:8080/api/auth/login", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json"
-        },
-        body: JSON.stringify({ username, password }) // use input values
+      const res = await axios.get("http://localhost:8080/api/test/secure");
+      console.log("Secure data:", res.data);
+    } catch (err) {
+      console.error("Access denied:", err.response?.data || err.message);
+    }
+  };
+
+  const handleLogin = async (e) => {
+    e.preventDefault(); // prevent page refresh
+
+    try {
+      // Step 1: login
+      const res = await axios.post("http://localhost:8080/api/auth/login", {
+        username,
+        password
       });
 
-      // Read response body once
-      const text = await response.text();
+      // Step 2: save token
+      localStorage.setItem("token", res.data.token);
 
-      // Try parsing JSON
-      let data;
-      try {
-        data = JSON.parse(text);
-      } catch {
-        data = { message: text || "No message" };
-      }
+      // Step 3: redirect
+      navigate("/dashboard");
 
-      if (response.ok) {
-        console.log("Login successful:", data);
-        setError(""); // clear previous errors
-      } else {
-        console.log("Login failed:", response.status, data.message);
-        setError(data.message || "Login failed");
-      }
+      // Step 4: fetch secure data (just for testing)
+      await fetchSecureData();
+
     } catch (err) {
-      console.error("Error logging in:", err);
-      setError("Network error");
+      alert(err.response?.data?.message || "Invalid credentials");
     }
   };
 
   return (
-    <div>
+    <form onSubmit={handleLogin}>
       <input
-        type="text"
-        placeholder="Username"
         value={username}
         onChange={(e) => setUsername(e.target.value)}
+        placeholder="Username"
       />
       <input
         type="password"
-        placeholder="Password"
         value={password}
         onChange={(e) => setPassword(e.target.value)}
+        placeholder="Password"
       />
-      <button onClick={handleLogin}>Login</button>
-      {error && <p style={{ color: "red" }}>{error}</p>}
-    </div>
+      <button type="submit">Login</button>
+    </form>
   );
 }
 
