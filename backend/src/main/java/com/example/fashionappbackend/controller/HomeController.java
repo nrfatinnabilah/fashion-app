@@ -8,8 +8,8 @@ import java.util.Arrays;
 @RestController
 public class HomeController {
 
-    @GetMapping("/api/products")
-    public List<String> home() {
-        return Arrays.asList("Shirt", "Pants", "Jacket");
+    @GetMapping("/api/dashboard")
+    public String home() {
+        return "Welcome!";
     }
 }

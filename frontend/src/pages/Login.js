@@ -1,52 +1,32 @@
-import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
+import { loginUser, fetchSecureData } from "../api/api";
 
 function Login() {
   const navigate = useNavigate();
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
-  // Optional: Axios interceptor to attach token automatically
-  axios.interceptors.request.use((config) => {
-    const token = localStorage.getItem("token");
-    if (token) {
-      config.headers.Authorization = `Bearer ${token}`;
-    }
-    return config;
-  });
-
-  // Fetch secure data (can be called anywhere after login)
-  const fetchSecureData = async () => {
-    try {
-      const res = await axios.get("http://localhost:8080/api/test/secure");
-      console.log("Secure data:", res.data);
-    } catch (err) {
-      console.error("Access denied:", err.response?.data || err.message);
-    }
-  };
-
   const handleLogin = async (e) => {
-    e.preventDefault(); // prevent page refresh
+    e.preventDefault();
 
     try {
       // Step 1: login
-      const res = await axios.post("http://localhost:8080/api/auth/login", {
-        username,
-        password
-      });
+      const res = await loginUser(username, password); // pass username & password
 
       // Step 2: save token
-      localStorage.setItem("token", res.data.token);
+      localStorage.setItem("token", res.token);
 
-      // Step 3: redirect
+      // Step 3: redirect to dashboard
       navigate("/dashboard");
 
-      // Step 4: fetch secure data (just for testing)
-      await fetchSecureData();
+      // Step 4: fetch secure data (optional, for testing)
+      const secureRes = await fetchSecureData(); // call function
+      console.log("Secure data:", secureRes);
 
     } catch (err) {
-      alert(err.response?.data?.message || "Invalid credentials");
+      console.error(err);
+      alert(err.message || "Invalid credentials");
     }
   };
 

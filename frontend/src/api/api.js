@@ -1,15 +1,23 @@
 // src/api.js
 const BASE_URL = "http://localhost:8080"; // Spring Boot backend
 
-export async function loginUser(email, password) {
+export async function loginUser(username, password) {
   const res = await fetch(`${BASE_URL}/api/auth/login`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ email, password }),
+    body: JSON.stringify({ username, password }),
   });
 
-  if (!res.ok) throw new Error("Login failed");
-  return res.json(); // should return JWT or user info
+  const text = await res.text(); // get raw response
+
+  try {
+    const data = JSON.parse(text); // try parse JSON
+    if (!res.ok) throw new Error(data.message || "Login failed");
+    return data;
+  } catch {
+    // fallback if not JSON
+    throw new Error(text || "Login failed");
+  }
 }
 
 export async function registerUser(name, email, password) {
@@ -33,7 +41,7 @@ export async function getDashboardData(token) {
 }
 
 export async function getProducts(){
-  const response = await fetch("http:localhost:8080/api/products");
+  const response = await fetch("http://localhost:8080/api/products");
   if (!response.ok) throw new Error("Failed to fetch products");
   return await response.json();
 }

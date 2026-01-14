@@ -3,12 +3,15 @@ C:\Users\nabil\OneDrive\Desktop\fashion_app\backend\src\main\java\com\example\fa
 C:\Users\nabil\OneDrive\Desktop\fashion_app\backend\src\main\java\com\example\fashionappbackend\controller\AuthController.java
 C:\Users\nabil\OneDrive\Desktop\fashion_app\backend\src\main\java\com\example\fashionappbackend\repository\UserRepository.java
 C:\Users\nabil\OneDrive\Desktop\fashion_app\backend\src\main\java\com\example\fashionappbackend\security\SecurityConfig.java
+C:\Users\nabil\OneDrive\Desktop\fashion_app\backend\src\main\java\com\example\fashionappbackend\controller\DashboardController.java
 C:\Users\nabil\OneDrive\Desktop\fashion_app\backend\src\main\java\com\example\fashionappbackend\security\JwtAuthenticationFilter.java
 C:\Users\nabil\OneDrive\Desktop\fashion_app\backend\src\main\java\com\example\fashionappbackend\WebConfig.java
 C:\Users\nabil\OneDrive\Desktop\fashion_app\backend\src\main\java\com\example\fashionappbackend\model\Task.java
 C:\Users\nabil\OneDrive\Desktop\fashion_app\backend\src\main\java\com\example\demo\auth\LoginRequest.java
 C:\Users\nabil\OneDrive\Desktop\fashion_app\backend\src\main\java\com\example\fashionappbackend\model\User.java
+C:\Users\nabil\OneDrive\Desktop\fashion_app\backend\src\main\java\com\example\fashionappbackend\controller\ProductController.java
 C:\Users\nabil\OneDrive\Desktop\fashion_app\backend\src\main\java\com\example\fashionappbackend\security\JwtUtil.java
+C:\Users\nabil\OneDrive\Desktop\fashion_app\backend\src\main\java\com\example\fashionappbackend\model\Role.java
 C:\Users\nabil\OneDrive\Desktop\fashion_app\backend\src\main\java\com\example\fashionappbackend\service\AuthService.java
 C:\Users\nabil\OneDrive\Desktop\fashion_app\backend\src\main\java\com\example\fashionappbackend\controller\TaskController.java
 C:\Users\nabil\OneDrive\Desktop\fashion_app\backend\src\main\java\com\example\fashionappbackend\controller\HomeController.java
